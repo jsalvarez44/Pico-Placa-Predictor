@@ -46,9 +46,27 @@ public class UI extends javax.swing.JFrame {
 
         jLabelLPlate.setText("LICENSE PLATE");
 
+        jTextFieldLicensePlate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldLicensePlateKeyTyped(evt);
+            }
+        });
+
         jLabelDate.setText("DATE (DD/MM/YYYY)");
 
+        jTextFieldDate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldDateKeyTyped(evt);
+            }
+        });
+
         jLabelTime.setText("TIME (HH:MM)");
+
+        jTextFieldTime.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldTimeKeyTyped(evt);
+            }
+        });
 
         jButtonCalculate.setText("CALCULATE");
         jButtonCalculate.addActionListener(new java.awt.event.ActionListener() {
@@ -198,6 +216,39 @@ public class UI extends javax.swing.JFrame {
          
         clearFields(); // the 'jTextFields' are cleaned to enter new data
     }//GEN-LAST:event_jButtonCalculateActionPerformed
+    
+    /**
+     *  validate the input of characters in the 'jTextField'
+     * only numbers, upper and lower letters, and '-'
+     * 
+     * @param evt key press event
+     */
+    private void jTextFieldLicensePlateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldLicensePlateKeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9') && (car < '-' || car > '-') && (car < 'a' || car > 'z') && (car < 'A' || car > 'Z')) evt.consume();
+    }//GEN-LAST:event_jTextFieldLicensePlateKeyTyped
+    
+    /**
+     * validate the input of characters in the 'jTextField'
+     * only numbers and '/'
+     * 
+     * @param evt key press event
+     */
+    private void jTextFieldDateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDateKeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9') && (car < '/' || car > '/')) evt.consume();
+    }//GEN-LAST:event_jTextFieldDateKeyTyped
+
+    /**
+     * validate the input of characters in the 'jTextField'
+     * only numbers and ':'
+     * 
+     * @param evt key press event
+     */
+    private void jTextFieldTimeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldTimeKeyTyped
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9') && (car < ':' || car > ':')) evt.consume();
+    }//GEN-LAST:event_jTextFieldTimeKeyTyped
     
     /**
      * clean the 'jTextFields' to leave them empty so that the user can enter new data

@@ -113,6 +113,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldLicensePlate">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldLicensePlateKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelDate">
           <Properties>
@@ -120,6 +123,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldDate">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldDateKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelTime">
           <Properties>
@@ -127,6 +133,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldTime">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldTimeKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonCalculate">
           <Properties>
