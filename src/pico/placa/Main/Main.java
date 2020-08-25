@@ -16,6 +16,7 @@ import pico.placa.UI.UI;
 public class Main {
     
     /**
+     * The user interface is called to start the interaction
      * 
      * @param args line of commands
      */

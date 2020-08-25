@@ -20,7 +20,7 @@ public class UI extends javax.swing.JFrame {
      */
     public UI() {
         initComponents();
-        this.setTitle("'Pico y Placa' Predictor");
+        this.setTitle("'Pico&Placa' Predictor");
         this.setLocationRelativeTo(null);
     }
 
@@ -41,8 +41,8 @@ public class UI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(getIconImage());
 
-        jLabelTitle.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabelTitle.setText("\"PICO Y PLACA\" PREDICTOR");
+        jLabelTitle.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabelTitle.setText("\"PICO&PLACA\" PREDICTOR");
 
         jLabelLPlate.setText("LICENSE PLATE");
 
@@ -61,32 +61,34 @@ public class UI extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addComponent(jLabelTitle)
+                .addGap(32, 32, 32))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(132, 132, 132)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabelTitle)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(132, 132, 132)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelDate)
                             .addComponent(jLabelLPlate)
                             .addComponent(jLabelTime))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextFieldLicensePlate)
-                            .addComponent(jTextFieldDate)
-                            .addComponent(jTextFieldTime, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))))
-                .addContainerGap(140, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonCalculate)
-                .addGap(213, 213, 213))
+                        .addGap(67, 67, 67)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldTime, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDate, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldLicensePlate, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(226, 226, 226)
+                        .addComponent(jButtonCalculate)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(43, 43, 43)
                 .addComponent(jLabelTitle)
-                .addGap(38, 38, 38)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldLicensePlate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelLPlate))
@@ -98,9 +100,9 @@ public class UI extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTime)
                     .addComponent(jTextFieldTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
+                .addGap(55, 55, 55)
                 .addComponent(jButtonCalculate)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,6 +120,7 @@ public class UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
+     * performs the necessary processes to calculate if the car can leave or not once the "CALCULATE 'button is pressed
      * 
      * @param evt the event of clicking the "Calculate" button
      */
@@ -127,62 +130,78 @@ public class UI extends javax.swing.JFrame {
         String date               = jTextFieldDate.getText();
         String time               = jTextFieldTime.getText();
         
-        /*  TIME PROCESS  */
-        String[] strTime = time.split(":");
+        /*  TIME DATA PROCESSES  */
+        String[] strTime = time.split(":"); // two position String array to save the splitted time data (HH:MM)
         
-        Integer i_hour = Integer.parseInt(strTime[0]);
-        Integer i_minute = Integer.parseInt(strTime[1]);
-        pTime pTime = new pTime(i_hour, i_minute);
+        // integration of time data in auxiliary variables
+        Integer auxHour    = Integer.parseInt(strTime[0]);
+        Integer auxMinute = Integer.parseInt(strTime[1]);
         
-        /*  DATE PROCESS  */
-        String[] strDate = date.split("/");
+        pTime pTime      = new pTime(auxHour, auxMinute); //object of type pTime to save the collected data
         
-        Integer i_day = Integer.parseInt(strDate[0]);
-        Integer i_month = Integer.parseInt(strDate[1]);
-        Integer i_year = Integer.parseInt(strDate[2]);
+        /*  DATE DATA PROCESSES  */
+        String[] strDate = date.split("/"); // three position String array to save the splitted date data (DD/MM/YYYY)
         
-        Date pDate = new Date(i_day-1900, i_month, i_year);
+        // integration of date data in auxiliary variables
+        Integer auxDay     = Integer.parseInt(strDate[0]);
+        Integer auxMonth = Integer.parseInt(strDate[1]);
+        Integer auxYear    = Integer.parseInt(strDate[2]);
+        
+        Date pDate = new Date(auxDay-1900, auxMonth, auxYear); //object of type Date to save the collected data
+                                                                                                //Date accepts the value of 'years' since 1900, so that 
+                                                                                                //number is subtracted from the required year when entering it
         DateFormat dayOfTheWeekFormat = new SimpleDateFormat("EEEE"); 
         String dayOfTheWeek = dayOfTheWeekFormat.format(pDate); //For using the text-format form of the day
+                                                                                                   //Mondar, Tuesday, Wednesday, etc.
         
-        /*  PLATE NUMBER PROCESS  */
-        Integer lastNumber = Integer.parseInt(LPlateNumber.substring(LPlateNumber.length()-1));
+        /*  PLATE NUMBER DATA PROCESS  */
+        Integer lastNumber = Integer.parseInt(LPlateNumber.substring(LPlateNumber.length()-1)); //the last digit of the plate is saved in 'lastNumber'
         
-        /*  PREDICTION  */
-        boolean predictionFlag = true; //Starts false to control validations (true = can drive; false = cannot drive)
-        
+        /*  PREDICTION PROCESSES  */  
+        //messages templates
         String badMessage = "Your car cannot be driven on " + date + " at " + time 
-                + ".\nRemember that you cannot drive your car with a license plate: "
-                +LPlateNumber + " \non " + dayOfTheWeek +"s from 7:00 to 9:30 and from 16:00 to 19:30.";
+                + ".\nRemember that you cannot drive your car with a license plate: " + LPlateNumber 
+                + " \non " + dayOfTheWeek +"s from 7:00 to 9:30 and from 16:00 to 19:30.";
         
         String goodMessage = "Your car can be driven on " + date + " at " + time + ".";
         
         int pMinutes = pTime.timeInMinutes(); //Transform all the hour values in minutes for validating
                              
+        boolean predictionFlag = true; //Starts true to control validations (true = can drive; false = cannot drive)
+        boolean timeFlag         = pTime.validateTimeInMinutes(pMinutes); //Validate if the time data is found among the 
+                                                                                                        //prohibited values. (true = it's inside; false = it sn't inside)
+        
+         //Switch cycle to validates the last digit of the plate depending on the day for boolean 'predictionFlag'.
         switch(dayOfTheWeek){
             case "Monday":
-                if((lastNumber == 1 || lastNumber == 2) && pTime.validateTimeInMinutes(pMinutes)) predictionFlag = false;
+                if((lastNumber == 1 || lastNumber == 2) && timeFlag) predictionFlag = false;
                 break;
             case "Tuesday":
-                if((lastNumber == 3 || lastNumber == 4) && pTime.validateTimeInMinutes(pMinutes)) predictionFlag = false;
+                if((lastNumber == 3 || lastNumber == 4) && timeFlag) predictionFlag = false;
                 break;
             case "Wednesday":
-                if((lastNumber == 5 || lastNumber == 6) && pTime.validateTimeInMinutes(pMinutes)) predictionFlag = false;
+                if((lastNumber == 5 || lastNumber == 6) && timeFlag) predictionFlag = false;
                 break;
             case "Thursday":
-                if((lastNumber == 7 || lastNumber == 8) && pTime.validateTimeInMinutes(pMinutes)) predictionFlag = false;
+                if((lastNumber == 7 || lastNumber == 8) && timeFlag) predictionFlag = false;
                 break;
             case "Friday":
-                if((lastNumber == 9 || lastNumber == 0) && pTime.validateTimeInMinutes(pMinutes)) predictionFlag = false;
+                if((lastNumber == 9 || lastNumber == 0) && timeFlag) predictionFlag = false;
                 break;
         }
         
+        // depending 'predictionFlag' validates the output type of the JOptionPane.
         int value = predictionFlag ? JOptionPane.INFORMATION_MESSAGE : JOptionPane.WARNING_MESSAGE;
-        JOptionPane.showMessageDialog(null, predictionFlag ? goodMessage : badMessage, "Result", value);
         
-        clearFields();
+        // the message is indicated to the user once everything has been validated
+        JOptionPane.showMessageDialog(null, predictionFlag ? goodMessage : badMessage, "Result", value);
+         
+        clearFields(); // the 'jTextFields' are cleaned to enter new data
     }//GEN-LAST:event_jButtonCalculateActionPerformed
     
+    /**
+     * clean the 'jTextFields' to leave them empty so that the user can enter new data
+     */
     public void clearFields(){
         jTextFieldLicensePlate.setText("");
         jTextFieldDate.setText("");
@@ -190,6 +209,9 @@ public class UI extends javax.swing.JFrame {
     }
     
     @Override
+    /**
+     * override the 'getIconImage ()' function to set your own icon in the 'JFrame'
+     */
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().
                 getImage(ClassLoader.getSystemResource("pico/placa/resources/logo.png"));
@@ -197,6 +219,11 @@ public class UI extends javax.swing.JFrame {
         return retValue;
     }
     
+    /**
+     * the main function of the graphical interface that set 'Nimbus' and validate errors
+     * 
+     * @param args line of commands
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -9,8 +9,9 @@ public class pTime{
     private Integer minute;
     
     /**
+     * constructor of 'pTime' where the data of 'hour' and 'minute' are entered during the creation of the object
      * 
-     * @param hour the new value of 'hour'
+     * @param hour     the new value of 'hour'
      * @param minute the new value of 'minute'
      */
     public pTime(Integer hour, Integer minute) {
@@ -18,6 +19,7 @@ public class pTime{
         this.minute = minute;
     }
  /**
+  * getter of 'hour' value
   * 
   * @return the value of 'hour'
   */
@@ -26,6 +28,7 @@ public class pTime{
     }
 
     /**
+     * setter of 'hour' value
      * 
      * @param hour the new value of 'hour'
      */
@@ -34,6 +37,7 @@ public class pTime{
     }
     
     /**
+     * getter of 'minute' value
      * 
      * @return  the value of 'minute'
      */
@@ -42,6 +46,7 @@ public class pTime{
     }
     
     /**
+     * setter of 'minute' value
      * 
      * @param minute the new value of 'minute'
      */
@@ -50,6 +55,7 @@ public class pTime{
     }
     
     /**
+     * transform time data into minutes
      * 
      * @return the time expressed in minutes
      */
@@ -58,6 +64,7 @@ public class pTime{
     }
     
     /**
+     * validates if time data is within set ranges
      * 
      * @param nMinutes the time in minutes
      * @return a boolean variable named "funcFlag" true if the 'xMinutes' value is on the interval
