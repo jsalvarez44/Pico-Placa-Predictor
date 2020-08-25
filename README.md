@@ -10,11 +10,11 @@ _This application allows the entry of three Strings through jTextFields which ar
 
 _To later validate if the vehicle of that plate can circulate on this date during that hour using the past rules of the Pico&Placa_
 
-## Author ✒️
+## Author 
 
 * **Sebastian Alvarez** - *Developer* - [Sebastian Alvarez](https://github.com/jsalvarez44)
 
-## Developed with 🛠️
+## Developed with 
 
 * [NetBeans IDE 8.2](https://netbeans.org/) - The IDE used
 
@@ -24,4 +24,7 @@ _To later validate if the vehicle of that plate can circulate on this date durin
 
 
 ---
+
+
+
 ⌨️ with ❤️ by [Sebastian Alvarez](https://github.com/jsalvarez44) 😊
